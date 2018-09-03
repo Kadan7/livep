@@ -1,0 +1,15 @@
+server:
+  port: 9099
+
+spring:
+  jpa:
+    generate-ddl: true
+
+management:
+  security:
+    enabled: false
+eureka:
+  client:
+    serviceUrl:
+      #defaultZone: http://kadan1:8280/eureka/
+      defaultZone: http://${EUREKA_MASTER_SERVICE_HOST}:${EUREKA_MASTER_SERVICE_PORT}/eureka/
