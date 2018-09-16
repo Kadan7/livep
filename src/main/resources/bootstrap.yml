@@ -1,6 +1,6 @@
 spring:
   application:
-    name: demo-service-2
+    name: circuit1
 #  zipkip:
 #    base-url: kadan1:7777
 #  cloud:
