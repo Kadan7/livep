@@ -1,6 +1,7 @@
 package com.kadan.demo.controller;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,19 +29,43 @@ public class DemoRestController {
     @Autowired
     RestTemplate restTemplate;
 
-    @Value("${client}")
-    String client;
+//    @Value("${client}")
+//    String client;
 
+    @RequestMapping(value = "/liveProbe", method = RequestMethod.GET)
+    public ResponseEntity liveProbe() {
+        List<String> timeList = new ArrayList<String>();
+        timeList.add("IM222OK1");
+        timeList.add("IMOK");
+        timeList.add("IM222OK");
+        timeList.add("IM222OK");
+        timeList.add("IM222OK4");
+        timeList.add("IM222OK");
+        timeList.add("IM222OK2");
+        timeList.add("5IMOK");
+        timeList.add("IMOK");
+        timeList.add("IMOK");
+        timeList.add("IMOK7");
+        timeList.add("IMOK");
+        Random r = new Random();
+        int a = r.nextInt(12);
+        String header = timeList.get(a);
 
-
-    @RequestMapping(value = "/circuit1", method = RequestMethod.GET)
-    @HystrixCommand(fallbackMethod = "defaultReturn")
-    public String getBookmarks() {
-        logger.info("visting circuit1 ...");
-        return restTemplate.getForObject(client,String.class);
-        //return ResponseEntity.status(HttpStatus.OK).body("you are visiting circuit service 1 ...");
-
+        logger.info("this is the header >>>> " + header);
+        if(StringUtils.containsIgnoreCase(header,"IMOK"))
+            return ResponseEntity.status(HttpStatus.OK).body("check the header pleases ... ...");
+        else
+            return ResponseEntity.status(500).body("check the header pleases ... ...");
     }
+
+//    @RequestMapping(value = "/circuit1", method = RequestMethod.GET)
+//    @HystrixCommand(fallbackMethod = "defaultReturn")
+//    public String getBookmarks() {
+//        logger.info("visting circuit1 ...");
+//        return restTemplate.getForObject(client,String.class);
+//        //return ResponseEntity.status(HttpStatus.OK).body("you are visiting circuit service 1 ...");
+//
+//    }
 
     public String defaultReturn(){
         return "somethings' wrong in the downstream host ...";

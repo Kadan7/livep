@@ -1,1 +1,1 @@
-java -jar /root/svc.jar
+java -jar /root/log.jar

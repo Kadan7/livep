@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.kadan.circuit</groupId>
-	<artifactId>demo-circuit-1</artifactId>
+	<groupId>com.kadan.probe</groupId>
+	<artifactId>demo-probe-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>demo-circuit-1</name>
+	<name>demo-probe-1</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>

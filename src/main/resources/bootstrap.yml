@@ -1,6 +1,6 @@
 spring:
   application:
-    name: circuit1
+    name: probehttp
 #  zipkip:
 #    base-url: kadan1:7777
 #  cloud:
